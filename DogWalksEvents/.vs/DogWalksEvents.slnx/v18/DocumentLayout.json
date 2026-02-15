@@ -1,0 +1,40 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\TUCOMPU\\Documents\\ECI solutions\\DogWalking\\DogWalksEvents\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{98C44A4D-BF82-4721-B163-780F18D513A0}|DogWalksEvents.csproj|c:\\users\\tucompu\\documents\\eci solutions\\dogwalking\\dogwalksevents\\eventsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{98C44A4D-BF82-4721-B163-780F18D513A0}|DogWalksEvents.csproj|solutionrelative:eventsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EventsManager.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\TUCOMPU\\Documents\\ECI solutions\\DogWalking\\DogWalksEvents\\EventsManager.cs",
+              "RelativeDocumentMoniker": "EventsManager.cs",
+              "ToolTip": "C:\\Users\\TUCOMPU\\Documents\\ECI solutions\\DogWalking\\DogWalksEvents\\EventsManager.cs [Dise\u00F1o]",
+              "RelativeToolTip": "EventsManager.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T02:29:32.248Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
