@@ -8,9 +8,11 @@
         public string Id { get; set; }
         public DateOnly WalkDate { get; set; }
         public int Duration { get; set; }
+        public string ClientId { get; set; }
         public string ClientFirstName { get; set; }
         public string ClientLastName { get; set; }
         public string PhoneNumber { get; set; }
+        public string DogId { get; set; }
         public string DogName { get; set; }
         public string DogBrand { get; set; }
         public int DogAge { get; set; }

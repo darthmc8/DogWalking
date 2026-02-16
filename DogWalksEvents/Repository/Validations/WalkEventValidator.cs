@@ -1,9 +1,5 @@
 ﻿using DogWalksEvents.Repository.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace DogWalksEvents.Repository.Validations
 {
@@ -12,8 +8,10 @@ namespace DogWalksEvents.Repository.Validations
     /// </summary>
     public class WalkEventValidator
     {
-        private static DogWalkEventDTO _dogWalkEventDTO;
-        
+        private static DogWalkEventDTO _dogWalkEventDTO = default!;
+        private static string _onlyLetterRegex = @"^[a-zA-Z]*$";
+        private static string _onlyNumberRegex = @"^[0-9]*$";
+
         public WalkEventValidator(DogWalkEventDTO dogWalkEventDTO)
         {
             _dogWalkEventDTO = dogWalkEventDTO;
@@ -27,27 +25,60 @@ namespace DogWalksEvents.Repository.Validations
             {
                 validationResult.Add(new WalkEventValidationResult
                 {
-                    ControlName = "txtFirstName",
+                    ControlName = "txtClientFirstName",
                     Message = "Client's First Name is required"
                 });
+            }
+            else
+            {
+                if (!Regex.IsMatch(_dogWalkEventDTO.ClientFirstName, _onlyLetterRegex))
+                {
+                    validationResult.Add(new WalkEventValidationResult
+                    {
+                        ControlName = "txtClientFirstName",
+                        Message = "Client's First Name format only allows letters"
+                    });
+                }
             }
 
             if (string.IsNullOrEmpty(_dogWalkEventDTO.ClientLastName.Trim()))
             {
                 validationResult.Add(new WalkEventValidationResult
                 {
-                    ControlName = "txtLastName",
+                    ControlName = "txtClientLastName",
                     Message = "Client's Last Name is required"
                 });
+            }
+            else
+            {
+                if (!Regex.IsMatch(_dogWalkEventDTO.ClientLastName, _onlyLetterRegex))
+                {
+                    validationResult.Add(new WalkEventValidationResult
+                    {
+                        ControlName = "txtClientLastName",
+                        Message = "Client's Last Name format only allows letters"
+                    });
+                }
             }
 
             if (string.IsNullOrEmpty(_dogWalkEventDTO.ClientPhoneNumber.Trim()))
             {
                 validationResult.Add(new WalkEventValidationResult
                 {
-                    ControlName = "txtPhoneNumber",
+                    ControlName = "txtClientPhoneNumber",
                     Message = "Client's Phone Number is required"
                 });
+            }
+            else
+            {
+                if (!Regex.IsMatch(_dogWalkEventDTO.ClientPhoneNumber, _onlyNumberRegex))
+                {
+                    validationResult.Add(new WalkEventValidationResult
+                    {
+                        ControlName = "txtClientPhoneNumber",
+                        Message = "Client's Phone Number format only allows numbers"
+                    });
+                }
             }
 
             if (string.IsNullOrEmpty(_dogWalkEventDTO.DogName.Trim()))
@@ -57,6 +88,17 @@ namespace DogWalksEvents.Repository.Validations
                     ControlName = "txtDogName",
                     Message = "Dog's Name is required"
                 });
+            }
+            else
+            {
+                if (!Regex.IsMatch(_dogWalkEventDTO.DogName, _onlyLetterRegex))
+                {
+                    validationResult.Add(new WalkEventValidationResult
+                    {
+                        ControlName = "txtDogName",
+                        Message = "Dog's Name format only allows letters"
+                    });
+                }
             }
 
             if (string.IsNullOrEmpty(_dogWalkEventDTO.DogBrand.Trim()))
