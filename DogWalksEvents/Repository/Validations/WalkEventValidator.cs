@@ -83,7 +83,7 @@ namespace DogWalksEvents.Repository.Validations
                 {
                     ControlName = "numDuration",
                     Message = "Duration must be grater than zero"
-                })
+                });
             }
 
             return validationResult;
