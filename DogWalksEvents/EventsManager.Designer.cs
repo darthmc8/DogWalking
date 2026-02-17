@@ -30,10 +30,10 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EventsManager));
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             grbInputs = new GroupBox();
             numWalkEventDuration = new NumericUpDown();
             lblWalkEventDuration = new Label();
@@ -352,7 +352,7 @@
             dtpWalkEventDateFilter.Location = new Point(222, 79);
             dtpWalkEventDateFilter.Name = "dtpWalkEventDateFilter";
             dtpWalkEventDateFilter.ShowCheckBox = true;
-            dtpWalkEventDateFilter.Size = new Size(98, 23);
+            dtpWalkEventDateFilter.Size = new Size(111, 23);
             dtpWalkEventDateFilter.TabIndex = 11;
             // 
             // lblWalkEventDateFilter
@@ -461,19 +461,21 @@
             // 
             gridWalkEvents.AllowUserToAddRows = false;
             gridWalkEvents.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = SystemColors.AppWorkspace;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            gridWalkEvents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            gridWalkEvents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.AppWorkspace;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            gridWalkEvents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            gridWalkEvents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             gridWalkEvents.Columns.AddRange(new DataGridViewColumn[] { EventId, ClientId, DogId, ClientFirstName, ClientLastName, ClientPhoneNumber, DogName, DogBrand, DogAge, WalkEventDate, WalkEventDuration });
             gridWalkEvents.Location = new Point(12, 115);
+            gridWalkEvents.MultiSelect = false;
             gridWalkEvents.Name = "gridWalkEvents";
             gridWalkEvents.ReadOnly = true;
+            gridWalkEvents.RowHeadersWidth = 23;
             gridWalkEvents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             gridWalkEvents.Size = new Size(864, 435);
             gridWalkEvents.TabIndex = 6;
@@ -550,10 +552,10 @@
             // DogAge
             // 
             DogAge.DataPropertyName = "DogAge";
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N0";
-            dataGridViewCellStyle6.NullValue = "0";
-            DogAge.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = "0";
+            DogAge.DefaultCellStyle = dataGridViewCellStyle2;
             DogAge.Frozen = true;
             DogAge.HeaderText = "Dog Age";
             DogAge.Name = "DogAge";
@@ -562,9 +564,9 @@
             // WalkEventDate
             // 
             WalkEventDate.DataPropertyName = "WalkDate";
-            dataGridViewCellStyle7.Format = "d";
-            dataGridViewCellStyle7.NullValue = null;
-            WalkEventDate.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            WalkEventDate.DefaultCellStyle = dataGridViewCellStyle3;
             WalkEventDate.Frozen = true;
             WalkEventDate.HeaderText = "Event Date";
             WalkEventDate.Name = "WalkEventDate";
@@ -573,10 +575,10 @@
             // WalkEventDuration
             // 
             WalkEventDuration.DataPropertyName = "Duration";
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "N0";
-            dataGridViewCellStyle8.NullValue = null;
-            WalkEventDuration.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            WalkEventDuration.DefaultCellStyle = dataGridViewCellStyle4;
             WalkEventDuration.Frozen = true;
             WalkEventDuration.HeaderText = "Event Duration";
             WalkEventDuration.Name = "WalkEventDuration";
