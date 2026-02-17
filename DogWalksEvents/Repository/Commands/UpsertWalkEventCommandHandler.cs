@@ -53,7 +53,7 @@ namespace DogWalksEvents.Repository.Commands
 
             var eventModel = await _dbContext.WalkEvents
                 .Where(c => c.Id == id)
-                .FirstAsync();
+                .FirstOrDefaultAsync();
 
             if (eventModel == null)
             {
@@ -66,7 +66,7 @@ namespace DogWalksEvents.Repository.Commands
             eventModel.ClientId = clientId;
             eventModel.DogId = dogId;
 
-             await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
 
             return id;
         }

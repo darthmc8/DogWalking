@@ -9,7 +9,7 @@ namespace DogWalksEvents.Repository.Validations
     public class WalkEventValidator : IDisposable
     {
         private static DogWalkEventDTO _dogWalkEventDTO = default!;
-        private static string _onlyLetterRegex = @"^[a-zA-Z]*$";
+        private static string _onlyLetterRegex = @"^[a-zA-Z ]*$";
         private static string _onlyNumberRegex = @"^[0-9]*$";
 
         public WalkEventValidator(DogWalkEventDTO dogWalkEventDTO)
@@ -36,7 +36,7 @@ namespace DogWalksEvents.Repository.Validations
                     validationResult.Add(new WalkEventValidationResult
                     {
                         ControlName = "txtClientFirstName",
-                        Message = "Client's First Name format only allows letters"
+                        Message = "Client's First Name format allows only letters"
                     });
                 }
             }
@@ -56,7 +56,7 @@ namespace DogWalksEvents.Repository.Validations
                     validationResult.Add(new WalkEventValidationResult
                     {
                         ControlName = "txtClientLastName",
-                        Message = "Client's Last Name format only allows letters"
+                        Message = "Client's Last Name format allows only letters"
                     });
                 }
             }
@@ -76,7 +76,7 @@ namespace DogWalksEvents.Repository.Validations
                     validationResult.Add(new WalkEventValidationResult
                     {
                         ControlName = "txtClientPhoneNumber",
-                        Message = "Client's Phone Number format only allows numbers"
+                        Message = "Client's Phone Number format allows only numbers"
                     });
                 }
             }
@@ -96,7 +96,7 @@ namespace DogWalksEvents.Repository.Validations
                     validationResult.Add(new WalkEventValidationResult
                     {
                         ControlName = "txtDogName",
-                        Message = "Dog's Name format only allows letters"
+                        Message = "Dog's Name format allows only letters"
                     });
                 }
             }
@@ -108,6 +108,17 @@ namespace DogWalksEvents.Repository.Validations
                     ControlName = "txtDogBrand",
                     Message = "Dog's Brand is required"
                 });
+            }
+            else
+                {
+                    if (!Regex.IsMatch(_dogWalkEventDTO.DogBrand, _onlyLetterRegex))
+                    {
+                        validationResult.Add(new WalkEventValidationResult
+                        {
+                            ControlName = "txtDogBrand",
+                            Message = "Dog's Brand format allows only letters"
+                        });
+                    }
             }
 
             if (_dogWalkEventDTO.DogAge <= 0)

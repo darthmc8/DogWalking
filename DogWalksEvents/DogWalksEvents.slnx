@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="DogWalksEvents.csproj" />
+  <Project Path="UnitTests/UnitTests.csproj" Id="e3e8148a-2011-492c-b401-9924b4a6c02e" />
 </Solution>

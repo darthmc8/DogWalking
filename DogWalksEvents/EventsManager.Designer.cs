@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EventsManager));
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
@@ -54,10 +55,11 @@
             btnClear = new Button();
             btnDelete = new Button();
             grpFilterOptions = new GroupBox();
+            btnClearFilters = new Button();
             btnExecuteFilter = new Button();
             dtpWalkEventDateFilter = new DateTimePicker();
             lblWalkEventDateFilter = new Label();
-            numWalkEventDurationFilter = new NumericUpDown();
+            numDogAgeFilter = new NumericUpDown();
             lblDogAgeFilter = new Label();
             txtDogBrandFilter = new TextBox();
             lblDogBrandFilter = new Label();
@@ -67,7 +69,6 @@
             lblClientLastNameFilter = new Label();
             txtClientFirstNameFilter = new TextBox();
             lblClientFirstNameFilter = new Label();
-            btnAdd = new Button();
             btnExit = new Button();
             gridWalkEvents = new DataGridView();
             EventId = new DataGridViewTextBoxColumn();
@@ -81,11 +82,12 @@
             DogAge = new DataGridViewTextBoxColumn();
             WalkEventDate = new DataGridViewTextBoxColumn();
             WalkEventDuration = new DataGridViewTextBoxColumn();
+            tltEventInputs = new ToolTip(components);
             grbInputs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numWalkEventDuration).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numDogAge).BeginInit();
             grpFilterOptions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numWalkEventDurationFilter).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numDogAgeFilter).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridWalkEvents).BeginInit();
             SuspendLayout();
             // 
@@ -110,9 +112,9 @@
             grbInputs.Controls.Add(btnSave);
             grbInputs.Controls.Add(btnClear);
             grbInputs.Controls.Add(btnDelete);
-            grbInputs.Location = new Point(882, 2);
+            grbInputs.Location = new Point(882, 50);
             grbInputs.Name = "grbInputs";
-            grbInputs.Size = new Size(304, 560);
+            grbInputs.Size = new Size(304, 509);
             grbInputs.TabIndex = 0;
             grbInputs.TabStop = false;
             grbInputs.Text = "Dog Walk Event Data";
@@ -123,6 +125,8 @@
             numWalkEventDuration.Name = "numWalkEventDuration";
             numWalkEventDuration.Size = new Size(64, 23);
             numWalkEventDuration.TabIndex = 21;
+            numWalkEventDuration.Enter += numWalkEventDuration_Enter;
+            numWalkEventDuration.MouseDown += numWalkEventDuration_MouseDown;
             // 
             // lblWalkEventDuration
             // 
@@ -156,6 +160,8 @@
             numDogAge.Name = "numDogAge";
             numDogAge.Size = new Size(64, 23);
             numDogAge.TabIndex = 17;
+            numDogAge.Enter += numDogAge_Enter;
+            numDogAge.MouseDown += numDogAge_MouseDown;
             // 
             // lblDogAge
             // 
@@ -255,7 +261,7 @@
             // 
             btnSave.Image = (Image)resources.GetObject("btnSave.Image");
             btnSave.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSave.Location = new Point(6, 512);
+            btnSave.Location = new Point(7, 468);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 36);
             btnSave.TabIndex = 5;
@@ -268,7 +274,7 @@
             // 
             btnClear.Image = (Image)resources.GetObject("btnClear.Image");
             btnClear.ImageAlign = ContentAlignment.MiddleLeft;
-            btnClear.Location = new Point(136, 512);
+            btnClear.Location = new Point(137, 468);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(75, 36);
             btnClear.TabIndex = 4;
@@ -281,7 +287,7 @@
             // 
             btnDelete.Image = (Image)resources.GetObject("btnDelete.Image");
             btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDelete.Location = new Point(223, 512);
+            btnDelete.Location = new Point(224, 468);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(75, 36);
             btnDelete.TabIndex = 4;
@@ -292,10 +298,11 @@
             // 
             // grpFilterOptions
             // 
+            grpFilterOptions.Controls.Add(btnClearFilters);
             grpFilterOptions.Controls.Add(btnExecuteFilter);
             grpFilterOptions.Controls.Add(dtpWalkEventDateFilter);
             grpFilterOptions.Controls.Add(lblWalkEventDateFilter);
-            grpFilterOptions.Controls.Add(numWalkEventDurationFilter);
+            grpFilterOptions.Controls.Add(numDogAgeFilter);
             grpFilterOptions.Controls.Add(lblDogAgeFilter);
             grpFilterOptions.Controls.Add(txtDogBrandFilter);
             grpFilterOptions.Controls.Add(lblDogBrandFilter);
@@ -307,10 +314,23 @@
             grpFilterOptions.Controls.Add(lblClientFirstNameFilter);
             grpFilterOptions.Location = new Point(12, 2);
             grpFilterOptions.Name = "grpFilterOptions";
-            grpFilterOptions.Size = new Size(864, 68);
+            grpFilterOptions.Size = new Size(864, 107);
             grpFilterOptions.TabIndex = 1;
             grpFilterOptions.TabStop = false;
             grpFilterOptions.Text = "Filter Options";
+            // 
+            // btnClearFilters
+            // 
+            btnClearFilters.Image = (Image)resources.GetObject("btnClearFilters.Image");
+            btnClearFilters.ImageAlign = ContentAlignment.MiddleLeft;
+            btnClearFilters.Location = new Point(783, 66);
+            btnClearFilters.Name = "btnClearFilters";
+            btnClearFilters.Size = new Size(75, 36);
+            btnClearFilters.TabIndex = 13;
+            btnClearFilters.Text = "Clear";
+            btnClearFilters.TextAlign = ContentAlignment.MiddleRight;
+            btnClearFilters.UseVisualStyleBackColor = true;
+            btnClearFilters.Click += btnClearFilters_Click;
             // 
             // btnExecuteFilter
             // 
@@ -327,32 +347,34 @@
             // 
             // dtpWalkEventDateFilter
             // 
+            dtpWalkEventDateFilter.Checked = false;
             dtpWalkEventDateFilter.Format = DateTimePickerFormat.Short;
-            dtpWalkEventDateFilter.Location = new Point(668, 35);
+            dtpWalkEventDateFilter.Location = new Point(222, 79);
             dtpWalkEventDateFilter.Name = "dtpWalkEventDateFilter";
+            dtpWalkEventDateFilter.ShowCheckBox = true;
             dtpWalkEventDateFilter.Size = new Size(98, 23);
             dtpWalkEventDateFilter.TabIndex = 11;
             // 
             // lblWalkEventDateFilter
             // 
             lblWalkEventDateFilter.AutoSize = true;
-            lblWalkEventDateFilter.Location = new Point(668, 17);
+            lblWalkEventDateFilter.Location = new Point(222, 61);
             lblWalkEventDateFilter.Name = "lblWalkEventDateFilter";
             lblWalkEventDateFilter.Size = new Size(63, 15);
             lblWalkEventDateFilter.TabIndex = 10;
             lblWalkEventDateFilter.Text = "Event Date";
             // 
-            // numWalkEventDurationFilter
+            // numDogAgeFilter
             // 
-            numWalkEventDurationFilter.Location = new Point(596, 35);
-            numWalkEventDurationFilter.Name = "numWalkEventDurationFilter";
-            numWalkEventDurationFilter.Size = new Size(53, 23);
-            numWalkEventDurationFilter.TabIndex = 9;
+            numDogAgeFilter.Location = new Point(7, 79);
+            numDogAgeFilter.Name = "numDogAgeFilter";
+            numDogAgeFilter.Size = new Size(53, 23);
+            numDogAgeFilter.TabIndex = 9;
             // 
             // lblDogAgeFilter
             // 
             lblDogAgeFilter.AutoSize = true;
-            lblDogAgeFilter.Location = new Point(596, 17);
+            lblDogAgeFilter.Location = new Point(7, 61);
             lblDogAgeFilter.Name = "lblDogAgeFilter";
             lblDogAgeFilter.Size = new Size(53, 15);
             lblDogAgeFilter.TabIndex = 8;
@@ -360,7 +382,7 @@
             // 
             // txtDogBrandFilter
             // 
-            txtDogBrandFilter.Location = new Point(454, 35);
+            txtDogBrandFilter.Location = new Point(611, 35);
             txtDogBrandFilter.Name = "txtDogBrandFilter";
             txtDogBrandFilter.Size = new Size(123, 23);
             txtDogBrandFilter.TabIndex = 7;
@@ -368,7 +390,7 @@
             // lblDogBrandFilter
             // 
             lblDogBrandFilter.AutoSize = true;
-            lblDogBrandFilter.Location = new Point(454, 17);
+            lblDogBrandFilter.Location = new Point(611, 17);
             lblDogBrandFilter.Name = "lblDogBrandFilter";
             lblDogBrandFilter.Size = new Size(63, 15);
             lblDogBrandFilter.TabIndex = 6;
@@ -376,15 +398,15 @@
             // 
             // txtDogNameFilter
             // 
-            txtDogNameFilter.Location = new Point(333, 35);
+            txtDogNameFilter.Location = new Point(439, 35);
             txtDogNameFilter.Name = "txtDogNameFilter";
-            txtDogNameFilter.Size = new Size(100, 23);
+            txtDogNameFilter.Size = new Size(150, 23);
             txtDogNameFilter.TabIndex = 5;
             // 
             // lblDogNameFilter
             // 
             lblDogNameFilter.AutoSize = true;
-            lblDogNameFilter.Location = new Point(333, 17);
+            lblDogNameFilter.Location = new Point(439, 17);
             lblDogNameFilter.Name = "lblDogNameFilter";
             lblDogNameFilter.Size = new Size(64, 15);
             lblDogNameFilter.TabIndex = 4;
@@ -392,15 +414,15 @@
             // 
             // txtClientLastNameFilter
             // 
-            txtClientLastNameFilter.Location = new Point(173, 35);
+            txtClientLastNameFilter.Location = new Point(222, 35);
             txtClientLastNameFilter.Name = "txtClientLastNameFilter";
-            txtClientLastNameFilter.Size = new Size(145, 23);
+            txtClientLastNameFilter.Size = new Size(196, 23);
             txtClientLastNameFilter.TabIndex = 3;
             // 
             // lblClientLastNameFilter
             // 
             lblClientLastNameFilter.AutoSize = true;
-            lblClientLastNameFilter.Location = new Point(173, 17);
+            lblClientLastNameFilter.Location = new Point(222, 17);
             lblClientLastNameFilter.Name = "lblClientLastNameFilter";
             lblClientLastNameFilter.Size = new Size(63, 15);
             lblClientLastNameFilter.TabIndex = 2;
@@ -410,7 +432,7 @@
             // 
             txtClientFirstNameFilter.Location = new Point(7, 35);
             txtClientFirstNameFilter.Name = "txtClientFirstNameFilter";
-            txtClientFirstNameFilter.Size = new Size(145, 23);
+            txtClientFirstNameFilter.Size = new Size(196, 23);
             txtClientFirstNameFilter.TabIndex = 1;
             // 
             // lblClientFirstNameFilter
@@ -422,24 +444,11 @@
             lblClientFirstNameFilter.TabIndex = 0;
             lblClientFirstNameFilter.Text = "First Name";
             // 
-            // btnAdd
-            // 
-            btnAdd.Image = (Image)resources.GetObject("btnAdd.Image");
-            btnAdd.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAdd.Location = new Point(12, 76);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(75, 36);
-            btnAdd.TabIndex = 2;
-            btnAdd.Text = "Add";
-            btnAdd.TextAlign = ContentAlignment.MiddleRight;
-            btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += btnAdd_Click;
-            // 
             // btnExit
             // 
             btnExit.Image = (Image)resources.GetObject("btnExit.Image");
             btnExit.ImageAlign = ContentAlignment.MiddleLeft;
-            btnExit.Location = new Point(795, 76);
+            btnExit.Location = new Point(1105, 12);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(75, 36);
             btnExit.TabIndex = 5;
@@ -453,21 +462,22 @@
             gridWalkEvents.AllowUserToAddRows = false;
             gridWalkEvents.AllowUserToDeleteRows = false;
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = SystemColors.Control;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.BackColor = SystemColors.AppWorkspace;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
             gridWalkEvents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             gridWalkEvents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gridWalkEvents.Columns.AddRange(new DataGridViewColumn[] { EventId, ClientId, DogId, ClientFirstName, ClientLastName, ClientPhoneNumber, DogName, DogBrand, DogAge, WalkEventDate, WalkEventDuration });
-            gridWalkEvents.Location = new Point(12, 118);
+            gridWalkEvents.Location = new Point(12, 115);
             gridWalkEvents.Name = "gridWalkEvents";
             gridWalkEvents.ReadOnly = true;
             gridWalkEvents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            gridWalkEvents.Size = new Size(864, 432);
+            gridWalkEvents.Size = new Size(864, 435);
             gridWalkEvents.TabIndex = 6;
+            gridWalkEvents.DataBindingComplete += gridWalkEvents_DataBindingComplete;
             gridWalkEvents.SelectionChanged += gridWalkEvents_SelectionChanged;
             // 
             // EventId
@@ -562,6 +572,7 @@
             // 
             // WalkEventDuration
             // 
+            WalkEventDuration.DataPropertyName = "Duration";
             dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle8.Format = "N0";
             dataGridViewCellStyle8.NullValue = null;
@@ -571,6 +582,10 @@
             WalkEventDuration.Name = "WalkEventDuration";
             WalkEventDuration.ReadOnly = true;
             // 
+            // tltEventInputs
+            // 
+            tltEventInputs.ShowAlways = true;
+            // 
             // EventsManager
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -578,7 +593,6 @@
             ClientSize = new Size(1192, 562);
             Controls.Add(gridWalkEvents);
             Controls.Add(btnExit);
-            Controls.Add(btnAdd);
             Controls.Add(grpFilterOptions);
             Controls.Add(grbInputs);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -594,7 +608,7 @@
             ((System.ComponentModel.ISupportInitialize)numDogAge).EndInit();
             grpFilterOptions.ResumeLayout(false);
             grpFilterOptions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numWalkEventDurationFilter).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numDogAgeFilter).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridWalkEvents).EndInit();
             ResumeLayout(false);
         }
@@ -603,23 +617,11 @@
 
         private GroupBox grbInputs;
         private GroupBox grpFilterOptions;
-        private Button btnAdd;
         private Button btnSave;
         private Button btnClear;
         private Button btnDelete;
         private Button btnExit;
         private DataGridView gridWalkEvents;
-        private DataGridViewTextBoxColumn EventId;
-        private DataGridViewTextBoxColumn ClientId;
-        private DataGridViewTextBoxColumn DogId;
-        private DataGridViewTextBoxColumn ClientFirstName;
-        private DataGridViewTextBoxColumn ClientLastName;
-        private DataGridViewTextBoxColumn ClientPhoneNumber;
-        private DataGridViewTextBoxColumn DogName;
-        private DataGridViewTextBoxColumn DogBrand;
-        private DataGridViewTextBoxColumn DogAge;
-        private DataGridViewTextBoxColumn WalkEventDate;
-        private DataGridViewTextBoxColumn WalkEventDuration;
         private TextBox txtClientLastNameFilter;
         private Label lblClientLastNameFilter;
         private TextBox txtClientFirstNameFilter;
@@ -631,7 +633,7 @@
         private Button btnExecuteFilter;
         private DateTimePicker dtpWalkEventDateFilter;
         private Label lblWalkEventDateFilter;
-        private NumericUpDown numWalkEventDurationFilter;
+        private NumericUpDown numDogAgeFilter;
         private Label lblDogAgeFilter;
         private Label lblClientFirstName;
         private TextBox txtClientPhoneNumber;
@@ -649,5 +651,18 @@
         private Label lblWalkEventDate;
         private NumericUpDown numWalkEventDuration;
         private Label lblWalkEventDuration;
+        private ToolTip tltEventInputs;
+        private Button btnClearFilters;
+        private DataGridViewTextBoxColumn EventId;
+        private DataGridViewTextBoxColumn ClientId;
+        private DataGridViewTextBoxColumn DogId;
+        private DataGridViewTextBoxColumn ClientFirstName;
+        private DataGridViewTextBoxColumn ClientLastName;
+        private DataGridViewTextBoxColumn ClientPhoneNumber;
+        private DataGridViewTextBoxColumn DogName;
+        private DataGridViewTextBoxColumn DogBrand;
+        private DataGridViewTextBoxColumn DogAge;
+        private DataGridViewTextBoxColumn WalkEventDate;
+        private DataGridViewTextBoxColumn WalkEventDuration;
     }
 }

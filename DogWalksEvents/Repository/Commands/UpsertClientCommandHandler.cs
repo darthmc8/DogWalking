@@ -29,7 +29,7 @@ namespace DogWalksEvents.Repository.Commands
 
             var clientModel = await _dbContext.Clients
                 .Where(c => c.Id == id)
-                .FirstAsync();
+                .FirstOrDefaultAsync();
 
             if (clientModel == null)
             {

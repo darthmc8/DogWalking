@@ -28,6 +28,8 @@ namespace DogWalksEvents.Repository.Commands
                 }
 
                 _dbContext.WalkEvents.Remove(eventToDelete);
+
+                await _dbContext.SaveChangesAsync();
             }
         }
     }
