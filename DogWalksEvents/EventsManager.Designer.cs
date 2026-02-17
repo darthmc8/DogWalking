@@ -57,7 +57,7 @@
             btnExecuteFilter = new Button();
             dtpWalkEventDateFilter = new DateTimePicker();
             lblWalkEventDateFilter = new Label();
-            numericUpDown1 = new NumericUpDown();
+            numWalkEventDurationFilter = new NumericUpDown();
             lblDogAgeFilter = new Label();
             txtDogBrandFilter = new TextBox();
             lblDogBrandFilter = new Label();
@@ -85,7 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)numWalkEventDuration).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numDogAge).BeginInit();
             grpFilterOptions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numWalkEventDurationFilter).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridWalkEvents).BeginInit();
             SuspendLayout();
             // 
@@ -295,7 +295,7 @@
             grpFilterOptions.Controls.Add(btnExecuteFilter);
             grpFilterOptions.Controls.Add(dtpWalkEventDateFilter);
             grpFilterOptions.Controls.Add(lblWalkEventDateFilter);
-            grpFilterOptions.Controls.Add(numericUpDown1);
+            grpFilterOptions.Controls.Add(numWalkEventDurationFilter);
             grpFilterOptions.Controls.Add(lblDogAgeFilter);
             grpFilterOptions.Controls.Add(txtDogBrandFilter);
             grpFilterOptions.Controls.Add(lblDogBrandFilter);
@@ -342,12 +342,12 @@
             lblWalkEventDateFilter.TabIndex = 10;
             lblWalkEventDateFilter.Text = "Event Date";
             // 
-            // numericUpDown1
+            // numWalkEventDurationFilter
             // 
-            numericUpDown1.Location = new Point(596, 35);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(53, 23);
-            numericUpDown1.TabIndex = 9;
+            numWalkEventDurationFilter.Location = new Point(596, 35);
+            numWalkEventDurationFilter.Name = "numWalkEventDurationFilter";
+            numWalkEventDurationFilter.Size = new Size(53, 23);
+            numWalkEventDurationFilter.TabIndex = 9;
             // 
             // lblDogAgeFilter
             // 
@@ -594,7 +594,7 @@
             ((System.ComponentModel.ISupportInitialize)numDogAge).EndInit();
             grpFilterOptions.ResumeLayout(false);
             grpFilterOptions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numWalkEventDurationFilter).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridWalkEvents).EndInit();
             ResumeLayout(false);
         }
@@ -631,7 +631,7 @@
         private Button btnExecuteFilter;
         private DateTimePicker dtpWalkEventDateFilter;
         private Label lblWalkEventDateFilter;
-        private NumericUpDown numericUpDown1;
+        private NumericUpDown numWalkEventDurationFilter;
         private Label lblDogAgeFilter;
         private Label lblClientFirstName;
         private TextBox txtClientPhoneNumber;

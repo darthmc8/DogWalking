@@ -1,12 +1,12 @@
 ﻿using System.IO;
 using System.Reflection;
 
-namespace DogWalksEvents.Loggin
+namespace DogWalksEvents.LogProcessor
 {
     /// <summary>
     /// Class to write logs across the application
     /// </summary>
-    public class Loggin
+    public class LogProcessorHandler
     {
         private static string _filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/Logs/EventsLog.txt";
 

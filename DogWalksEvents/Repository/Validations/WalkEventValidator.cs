@@ -6,7 +6,7 @@ namespace DogWalksEvents.Repository.Validations
     /// <summary>
     /// WalkEvent DTO Validator
     /// </summary>
-    public class WalkEventValidator
+    public class WalkEventValidator : IDisposable
     {
         private static DogWalkEventDTO _dogWalkEventDTO = default!;
         private static string _onlyLetterRegex = @"^[a-zA-Z]*$";
@@ -129,6 +129,11 @@ namespace DogWalksEvents.Repository.Validations
             }
 
             return validationResult;
+        }
+
+        public void Dispose()
+        {
+            _dogWalkEventDTO = default!;
         }
     }
 }
