@@ -7,7 +7,7 @@ While it only creates and deletes Events information, it can create and update C
 - To update a Client, it takes the phone number as identifier, if the phone number exists in the database, the client will be updated, otherwise it will be created
 - To update a Dog, it takes the dog name, brtand and age as identifiers
 
-# Architecture (Strcuture)
+# Architecture (Structure)
 Clean Architecture was applied so the application can be maintened, reused and extended.
 Its architecture consist in:
 - "Data" layer for configuration and access to the database
